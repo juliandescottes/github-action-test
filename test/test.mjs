@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 export async function navigateTo(urlPath) {
     await browser.url(urlPath);
   
@@ -27,7 +29,9 @@ describe('tests', async function () {
       // Pause to make sure page has painted
       await browser.pause(2500);
       const output = await $('#output');
-      console.log('Test ' + i + ' FCP entry:', await output.getText());
+      const fcpEntry = JSON.parse(await output.getText());
+      console.log('Test ' + i + ' FCP entry:', fcpEntry);
+      assert(fcpEntry.startTime < 1000);
     });
   }
 });
