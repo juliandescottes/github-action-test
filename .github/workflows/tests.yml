@@ -37,8 +37,14 @@ jobs:
       - name: Run e2e tests for firefox
         run: npm run test:e2e -- --browsers=firefox
         continue-on-error: true
-      - name: list temp JSONs
-        run: cat /tmp/profiler.json
+      - name: Upload profile artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: profile.json
+          path: /tmp/profiler.json
+      - name: Echo RUN_ID
+        run: echo "The RUN_ID is $GITHUB_RUN_ID"
+        run: echo "So profiler should be available at https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts/profiler.json"
   safari-tests:
     name: Run Safari e2e tests
     # Requires macos
