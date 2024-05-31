@@ -26,7 +26,7 @@ jobs:
     env:
       MOZ_PROFILER_STARTUP_FILTERS: "*"
       MOZ_PROFILER_STARTUP: "1"
-      MOZ_PROFILER_SHUTDOWN: "/tmp"
+      MOZ_PROFILER_SHUTDOWN: "/tmp/profiler.json"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
         run: npm run test:e2e -- --browsers=firefox
         continue-on-error: true
       - name: list temp JSONs
-        run: ls /tmp/*.json
+        run: cat /tmp/profiler.json
   safari-tests:
     name: Run Safari e2e tests
     # Requires macos
