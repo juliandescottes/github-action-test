@@ -43,7 +43,7 @@ jobs:
           name: profile.json
           path: /tmp/profiler.json
       - name: Echo profile location
-        run: echo "Profiler should be available at https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts/profiler.json"
+        run: echo "Profiler should be available at the bottom of this page https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/"
   safari-tests:
     name: Run Safari e2e tests
     # Requires macos
