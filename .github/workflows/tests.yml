@@ -23,6 +23,10 @@ jobs:
     name: Run Firefox e2e tests
     # Runs best on macos for CI as linux requires extra setup
     runs-on: macos-latest
+    env:
+      MOZ_PROFILER_STARTUP_FILTERS=*
+      MOZ_PROFILER_STARTUP=1
+      MOZ_PROFILER_SHUTDOWN=/tmp
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -32,6 +36,8 @@ jobs:
         run: npm run test:server &
       - name: Run e2e tests for firefox
         run: npm run test:e2e -- --browsers=firefox
+      - name: list temp JSONs
+        run: ls /tmp/*.json
   safari-tests:
     name: Run Safari e2e tests
     # Requires macos
