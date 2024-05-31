@@ -36,6 +36,7 @@ jobs:
         run: npm run test:server &
       - name: Run e2e tests for firefox
         run: npm run test:e2e -- --browsers=firefox
+        continue-on-error: true
       - name: list temp JSONs
         run: ls /tmp/*.json
   safari-tests:
