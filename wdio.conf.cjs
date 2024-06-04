@@ -83,6 +83,15 @@ module.exports.config = {
         // binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
       };
     }
+    if (browserName === 'fiefox') {
+      capability['moz:firefoxOptions'] = {
+        prefs: {
+          'fission.processSiteNames': true
+        }
+        // Uncomment to test on Chrome Canary.
+        // binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
+      };
+    }
     return capability;
   }),
   //

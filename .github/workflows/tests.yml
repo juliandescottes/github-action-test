@@ -27,6 +27,7 @@ jobs:
       MOZ_PROFILER_STARTUP_FILTERS: "*"
       MOZ_PROFILER_STARTUP: "1"
       MOZ_PROFILER_SHUTDOWN: "/tmp/profiler.json"
+      MOZ_LOG: "Process:5"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
