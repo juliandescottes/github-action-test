@@ -34,7 +34,7 @@ jobs:
       - name: NPM install
         run: npm install
       - name: Run xctrace
-        run: xctrace record --template 'Time Profiler' --all-processes --time-limit 5s --output /tmp/xctrace.out
+        run: xctrace record --template 'Time Profiler' --all-processes --time-limit 5s --output /tmp/xctrace.trace
       - name: Run server
         run: npm run test:server &
       - name: Run e2e tests for firefox
@@ -48,8 +48,8 @@ jobs:
       - name: Upload xctrace artifact
         uses: actions/upload-artifact@v3
         with:
-          name: xctrace.out
-          path: /tmp/xctrace.out
+          name: xctrace.trace
+          path: /tmp/xctrace.trace
       - name: Echo profile location
         run: echo "Profiler should be available at the bottom of this page https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/"
   safari-tests:
