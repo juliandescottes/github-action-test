@@ -34,7 +34,7 @@ jobs:
       - name: NPM install
         run: npm install
       - name: Run xctrace
-        run: xctrace record --template 'Time Profiler' --all-processes --time-limit 5s --output /tmp/xctrace.trace &
+        run: xctrace record --template 'Time Profiler' --all-processes --time-limit 30s --output /tmp/xctrace.trace &
       - name: Run server
         run: npm run test:server &
       - name: Run e2e tests for firefox
@@ -46,7 +46,7 @@ jobs:
           name: profile.json
           path: /tmp/profiler.json
       - name: Sleep for 120 seconds
-        run: sleep 120
+        run: sleep 1
         shell: bash
       - name: Upload xctrace artifact
         uses: actions/upload-artifact@v3
