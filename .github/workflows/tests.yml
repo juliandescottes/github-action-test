@@ -46,7 +46,7 @@ jobs:
           name: profile.json
           path: /tmp/profiler.json
       - name: Sleep for 120 seconds
-        run: sleep 120s
+        run: sleep 120
         shell: bash
       - name: Upload xctrace artifact
         uses: actions/upload-artifact@v3
