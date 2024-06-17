@@ -87,7 +87,7 @@ module.exports.config = {
       capability['moz:firefoxOptions'] = {
         prefs: {
           'fission.processSiteNames': true,
-          'security.sandbox.content.level': 0,
+          'security.sandbox.content.level': 3,
           'security.sandbox.logging.enabled': true
         }
         // Uncomment to test on Chrome Canary.
