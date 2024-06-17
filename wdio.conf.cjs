@@ -86,7 +86,9 @@ module.exports.config = {
     if (browserName === 'firefox') {
       capability['moz:firefoxOptions'] = {
         prefs: {
-          'fission.processSiteNames': true
+          'fission.processSiteNames': true,
+          'security.sandbox.content.level': 0,
+          'security.sandbox.logging.enabled': true
         }
         // Uncomment to test on Chrome Canary.
         // binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
