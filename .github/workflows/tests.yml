@@ -33,8 +33,6 @@ jobs:
         uses: actions/checkout@v4
       - name: NPM install
         run: npm install
-      - name: Run xctrace
-        run: sleep 10 && xctrace record --template 'Time Profiler' --all-processes --time-limit 1s --output /tmp/xctrace.trace &
       - name: Run server
         run: npm run test:server &
       - name: Run e2e tests for firefox
@@ -45,14 +43,6 @@ jobs:
         with:
           name: profile.json
           path: /tmp/profiler.json
-      - name: Sleep for 120 seconds
-        run: sleep 1
-        shell: bash
-      - name: Upload xctrace artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: xctrace.trace
-          path: /tmp/xctrace.trace
       - name: Echo profile location
         run: echo "Profiler should be available at the bottom of this page https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/"
   safari-tests:
