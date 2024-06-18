@@ -38,6 +38,8 @@ jobs:
       - name: Run e2e tests for firefox
         run: npm run test:e2e -- --browsers=firefox
         continue-on-error: true
+      - name: macos logs
+        run: log show --last 10m
       - name: Upload profile artifact
         uses: actions/upload-artifact@v3
         with:
