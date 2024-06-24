@@ -91,7 +91,6 @@ module.exports.config = {
           'security.sandbox.content.level': 1,
           'security.sandbox.logging.enabled': true,
           'security.sandbox.content.mac.disconnect-windowserver': false,
-          'args': ['--full-version']
         }
         // Uncomment to test on Chrome Canary.
         // binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
