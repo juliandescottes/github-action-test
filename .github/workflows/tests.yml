@@ -38,11 +38,18 @@ jobs:
       - name: Run e2e tests for firefox
         run: npm run test:e2e -- --browsers=firefox
         continue-on-error: true
+      - name: macos logs
+        run: log show --last 5m > /tmp/log_show.txt
       - name: Upload profile artifact
         uses: actions/upload-artifact@v3
         with:
           name: profile.json
           path: /tmp/profiler.json
+      - name: Upload log artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: log_show.txt
+          path: /tmp/log_show.txt
       - name: Echo profile location
         run: echo "Profiler should be available at the bottom of this page https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/"
   safari-tests:
