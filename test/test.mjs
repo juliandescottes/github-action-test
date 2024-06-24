@@ -1,6 +1,7 @@
 import assert from 'assert';
 
 export async function navigateTo(urlPath) {
+    console.log(browser)
     await browser.url(urlPath);
   
     // In Firefox, if the global PageLoadStrategy is set to "none", then
