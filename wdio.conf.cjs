@@ -84,6 +84,7 @@ module.exports.config = {
       };
     }
     if (browserName === 'firefox') {
+      capability.browserVersion = 'latest';
       capability['moz:firefoxOptions'] = {
         prefs: {
           'fission.processSiteNames': true,
