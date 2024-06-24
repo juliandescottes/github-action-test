@@ -33,8 +33,6 @@ jobs:
         uses: actions/checkout@v4
       - name: NPM install
         run: npm install
-      - name: Print buildId
-        run: firefox --full-version
       - name: Run server
         run: npm run test:server &
       - name: Run e2e tests for firefox
