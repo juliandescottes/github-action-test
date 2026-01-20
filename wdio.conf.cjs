@@ -84,7 +84,7 @@ module.exports.config = {
       };
     }
     if (browserName === "firefox") {
-      capability.browserVersion = "146";
+      capability.browserVersion = "stable";
       capability["moz:firefoxOptions"] = {
         prefs: {
           "dom.webgpu.enabled": false,
