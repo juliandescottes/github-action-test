@@ -84,7 +84,7 @@ module.exports.config = {
       };
     }
     if (browserName === "firefox") {
-      capability.browserVersion = "latest";
+      capability.browserVersion = "146";
       capability["moz:firefoxOptions"] = {
         prefs: {
           "dom.webgpu.enabled": false,
@@ -123,7 +123,7 @@ module.exports.config = {
   //     '@wdio/appium-service': 'info'
   // },
   //
-  // If you only want to run your tests until a specific amount of tests have failed use
+  // If you only want to run your tests until a specific amount of tests have faile d use
   // bail (default is 0 - don't bail, run all tests).
   bail: 0,
   //
