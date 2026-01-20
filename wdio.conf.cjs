@@ -88,7 +88,7 @@ module.exports.config = {
       capability["moz:firefoxOptions"] = {
         prefs: {
           "dom.webgpu.enabled": false,
-          "layers.gpu-process.enabled": false,
+          "layers.gpu-process.enabled": true,
           "fission.processSiteNames": true,
           "security.sandbox.content.level": 1,
           "security.sandbox.logging.enabled": true,
