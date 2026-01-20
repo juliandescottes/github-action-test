@@ -89,7 +89,6 @@ module.exports.config = {
         prefs: {
           "dom.webgpu.enabled": false,
           "layers.gpu-process.enabled": true,
-          "security.sandbox.gpu.level": 0,
           "fission.processSiteNames": true,
           "security.sandbox.content.level": 1,
           "security.sandbox.logging.enabled": true,
