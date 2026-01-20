@@ -13,12 +13,12 @@
  limitations under the License.
 */
 
-const argv = require('yargs').argv;
+const argv = require("yargs").argv;
 
 // Allow running tests for a comma-delimited set of browsers via `--browsers=chrome,safari`.
 const browsers = argv.browsers
-  ? argv.browsers.toLowerCase().split(',')
-  : ['chrome', 'firefox', 'safari'];
+  ? argv.browsers.toLowerCase().split(",")
+  : ["chrome", "firefox", "safari"];
 
 module.exports.config = {
   //
@@ -26,7 +26,7 @@ module.exports.config = {
   // Runner Configuration
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
-  runner: 'local',
+  runner: "local",
   //
   // ==================
   // Specify Test Files
@@ -43,7 +43,7 @@ module.exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['test/test.mjs'],
+  specs: ["test/test.mjs"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -74,24 +74,25 @@ module.exports.config = {
     const capability = {
       browserName: browserName,
       maxInstances: 1,
-      pageLoadStrategy: 'none',
+      pageLoadStrategy: "none",
     };
-    if (browserName === 'chrome') {
-      capability['goog:chromeOptions'] = {
-        excludeSwitches: ['enable-automation'],
+    if (browserName === "chrome") {
+      capability["goog:chromeOptions"] = {
+        excludeSwitches: ["enable-automation"],
         // Uncomment to test on Chrome Canary.
         // binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
       };
     }
-    if (browserName === 'firefox') {
-      capability.browserVersion = 'latest';
-      capability['moz:firefoxOptions'] = {
+    if (browserName === "firefox") {
+      capability.browserVersion = "latest";
+      capability["moz:firefoxOptions"] = {
         prefs: {
-          'fission.processSiteNames': true,
-          'security.sandbox.content.level': 1,
-          'security.sandbox.logging.enabled': true,
-          'security.sandbox.content.mac.disconnect-windowserver': false,
-        }
+          "dom.webgpu.enabled": false,
+          "fission.processSiteNames": true,
+          "security.sandbox.content.level": 1,
+          "security.sandbox.logging.enabled": true,
+          "security.sandbox.content.mac.disconnect-windowserver": false,
+        },
         // Uncomment to test on Chrome Canary.
         // binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
       };
@@ -105,7 +106,7 @@ module.exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: 'warn',
+  logLevel: "warn",
   //
   // Set specific log levels per logger
   // loggers:
@@ -129,7 +130,7 @@ module.exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: 'http://localhost:9090',
+  baseUrl: "http://localhost:9090",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -153,7 +154,7 @@ module.exports.config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: 'mocha',
+  framework: "mocha",
 
   //
   // The number of times to retry the entire specfile when it fails as a whole
@@ -168,12 +169,12 @@ module.exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec'],
+  reporters: ["spec"],
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
   mochaOpts: {
-    ui: 'bdd',
+    ui: "bdd",
     timeout: 60000,
   },
 };
