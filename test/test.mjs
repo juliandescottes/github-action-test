@@ -1,33 +1,44 @@
 import assert from 'assert';
+import { FirefoxDriver } from '../lib/webdriver-helper.mjs';
 
-export async function navigateTo(urlPath) {
-    console.log(browser)
-    await browser.url(urlPath);
-  
-    // In Firefox, if the global PageLoadStrategy is set to "none", then
-    // it's possible that `browser.url()` will return before the navigation
-    // has started and the old page will still be around, so we have to
-    // manually wait until the URL matches the passed URL. Note that this can
-    // still fail if the prior test navigated to a page with the same URL.
-    if (browser.capabilities.browserName === 'firefox') {
-      await browser.waitUntil(async () => {
-        return (await browser.getUrl()).endsWith(urlPath);
-      });
-    }
-}
+let driver;
 
-describe('tests', async function () {
-  beforeEach(async function () {
-    await navigateTo('about:blank');
+describe('tests', function () {
+  // Initialize driver before all tests
+  before(async function () {
+    driver = new FirefoxDriver({
+      firefoxBinary: process.env.FIREFOX_BINARY, // Optional custom binary
+      baseUrl: 'http://localhost:9090',
+    });
+
+    await driver.build();
+    console.log('Firefox driver initialized');
   });
 
-  for (let i=1;i<=3;i++) {
+  // Clean up driver after all tests
+  after(async function () {
+    if (driver) {
+      await driver.quit();
+      console.log('Firefox driver closed');
+    }
+  });
+
+  // Navigate to blank page before each test
+  beforeEach(async function () {
+    await driver.url('about:blank');
+  });
+
+  // Run 3 FCP measurement tests
+  for (let i = 1; i <= 3; i++) {
     it('test ' + i, async function () {
-      await navigateTo('/index.html');
+      await driver.url('/index.html');
+
       // Pause to make sure page has painted
-      await browser.pause(2500);
-      const output = await $('#output');
+      await driver.pause(2500);
+
+      const output = await driver.$('#output');
       const fcpEntry = JSON.parse(await output.getText());
+
       console.log('Test ' + i + ' FCP entry:', fcpEntry);
       assert(fcpEntry.startTime < 1000);
     });
